@@ -10,7 +10,7 @@ import XCTest
 @testable import LaunchLibraryAPI
 
 final class LaunchStatusTests: XCTestCase {
-    private func test_launchStatus_endpoint(with params: [String: String]) {
+    private func test_launchStatus_endpoint(with params: [APIParameter: String]) {
         let expectation = self.expectation(description: "LaunchStatus")
         
         APIService.shared.GET(endpoint: .launchStatus, params: params) { (result: Result<PaginatedResponse<LaunchStatus>, APIError>) in
@@ -31,17 +31,17 @@ final class LaunchStatusTests: XCTestCase {
     }
     
     func test_launchStatus_byID_list() {
-        let params = ["id": "1", "mode": "list"]
+        let params: [APIParameter: String] = [.id: "1", .mode: "list"]
         test_launchStatus_endpoint(with: params)
     }
     
     func test_launchStatus_byID_summary() {
-        let params = ["id": "1", "mode": "summary"]
+        let params: [APIParameter: String] = [.id: "1", .mode: "summary"]
         test_launchStatus_endpoint(with: params)
     }
     
     func test_launchStatus_byID_verbose() {
-        let params = ["id": "1", "mode": "verbose"]
+        let params: [APIParameter: String] = [.id: "1", .mode: "verbose"]
         test_launchStatus_endpoint(with: params)
     }
 }

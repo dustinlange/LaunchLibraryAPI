@@ -10,7 +10,7 @@ import XCTest
 @testable import LaunchLibraryAPI
 
 final class RocketFamilyTests: XCTestCase {
-    private func test_rocketFamily_endpoint(with params: [String: String]) {
+    private func test_rocketFamily_endpoint(with params: [APIParameter: String]) {
         let expectation = self.expectation(description: "RocketFamily")
         
         APIService.shared.GET(endpoint: .rocketFamily, params: params) { (result: Result<PaginatedResponse<RocketFamily>, APIError>) in
@@ -31,17 +31,17 @@ final class RocketFamilyTests: XCTestCase {
     }
     
     func test_rocketFamily_byID_list() {
-        let params = ["id": "1", "mode": "list"]
+        let params: [APIParameter: String] = [.id: "1", .mode: "list"]
         test_rocketFamily_endpoint(with: params)
     }
     
     func test_rocketFamily_byID_summary() {
-        let params = ["id": "1", "mode": "summary"]
+        let params: [APIParameter: String] = [.id: "1", .mode: "summary"]
         test_rocketFamily_endpoint(with: params)
     }
     
     func test_rocketFamily_byID_verbose() {
-        let params = ["id": "1", "mode": "verbose"]
+        let params: [APIParameter: String] = [.id: "1", .mode: "verbose"]
         test_rocketFamily_endpoint(with: params)
     }
 }

@@ -10,7 +10,7 @@ import XCTest
 @testable import LaunchLibraryAPI
 
 final class PadTests: XCTestCase {
-    private func test_pad_endpoint(with params: [String: String]) {
+    private func test_pad_endpoint(with params: [APIParameter: String]) {
         let expectation = self.expectation(description: "Pad")
         
         APIService.shared.GET(endpoint: .pad, params: params) { (result: Result<PaginatedResponse<Pad>, APIError>) in
@@ -31,17 +31,17 @@ final class PadTests: XCTestCase {
     }
     
     func test_pad_byID_list() {
-        let params = ["id": "1", "mode": "list"]
+        let params: [APIParameter: String] = [.id: "1", .mode: "list"]
         test_pad_endpoint(with: params)
     }
     
     func test_pad_byID_summary() {
-        let params = ["id": "1", "mode": "summary"]
+        let params: [APIParameter: String] = [.id: "1", .mode: "summary"]
         test_pad_endpoint(with: params)
     }
     
     func test_pad_byID_verbose() {
-        let params = ["id": "1", "mode": "verbose"]
+        let params: [APIParameter: String] = [.id: "1", .mode: "verbose"]
         test_pad_endpoint(with: params)
     }
 }

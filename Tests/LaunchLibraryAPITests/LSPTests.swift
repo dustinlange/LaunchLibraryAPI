@@ -10,7 +10,7 @@ import XCTest
 @testable import LaunchLibraryAPI
 
 final class LSPTests: XCTestCase {
-    private func test_lsp_endpoint(with params: [String: String]) {
+    private func test_lsp_endpoint(with params: [APIParameter: String]) {
         let expectation = self.expectation(description: "LSP")
         
         APIService.shared.GET(endpoint: .lsp, params: params) { (result: Result<PaginatedResponse<Agency>, APIError>) in
@@ -31,17 +31,17 @@ final class LSPTests: XCTestCase {
     }
     
     func test_lsp_byID_list() {
-        let params = ["id": "82", "mode": "list"]
+        let params: [APIParameter: String] = [.id: "82", .mode: "list"]
         test_lsp_endpoint(with: params)
     }
     
     func test_lsp_byID_summary() {
-        let params = ["id": "82", "mode": "summary"]
+        let params: [APIParameter: String] = [.id: "82", .mode: "summary"]
         test_lsp_endpoint(with: params)
     }
     
     func test_lsp_byID_verbose() {
-        let params = ["id": "82", "mode": "verbose"]
+        let params: [APIParameter: String] = [.id: "82", .mode: "verbose"]
         test_lsp_endpoint(with: params)
     }
 }

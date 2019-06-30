@@ -14,7 +14,7 @@ public struct APIService {
     private let decoder = JSONDecoder()
     
     public func GET<T: Codable>(endpoint: EndPoint,
-                                params: [String: String]?,
+                                params: [APIParameter: String]?,
                                 completion: @escaping (Result<T, APIError>) -> Void) {
         let url = baseUrl.appendingPathComponent(endpoint.path())
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)!
@@ -22,7 +22,7 @@ public struct APIService {
         
         if let params = params {
             for (_, value) in params.enumerated() {
-                let queryItem = URLQueryItem(name: value.key, value: value.value)
+                let queryItem = URLQueryItem(name: value.key.rawValue, value: value.value)
                 urlComponents.queryItems?.append(queryItem)
             }
         }

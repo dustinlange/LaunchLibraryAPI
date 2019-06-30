@@ -10,7 +10,7 @@ import XCTest
 @testable import LaunchLibraryAPI
 
 final class AgencyTypeTests: XCTestCase {
-    private func test_agencyType_endpoint(with params: [String: String]) {
+    private func test_agencyType_endpoint(with params: [APIParameter: String]) {
         let expectation = self.expectation(description: "AgencyType")
         
         APIService.shared.GET(endpoint: .agencyType, params: params) { (result: Result<PaginatedResponse<AgencyType>, APIError>) in
@@ -31,17 +31,17 @@ final class AgencyTypeTests: XCTestCase {
     }
     
     func test_agencyType_byID_list() {
-        let params = ["id": "1", "mode": "list"]
+        let params: [APIParameter: String] = [.id: "1", .mode: "list"]
         test_agencyType_endpoint(with: params)
     }
     
     func test_agencyType_byID_summary() {
-        let params = ["id": "1", "mode": "summary"]
+        let params: [APIParameter: String] = [.id: "1", .mode: "summary"]
         test_agencyType_endpoint(with: params)
     }
     
     func test_agencyType_byID_verbose() {
-        let params = ["id": "1", "mode": "verbose"]
+        let params: [APIParameter: String] = [.id: "1", .mode: "verbose"]
         test_agencyType_endpoint(with: params)
     }
 }

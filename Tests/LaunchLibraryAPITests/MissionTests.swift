@@ -10,7 +10,7 @@ import XCTest
 @testable import LaunchLibraryAPI
 
 final class MissionTests: XCTestCase {
-    private func test_mission_endpoint(with params: [String: String]) {
+    private func test_mission_endpoint(with params: [APIParameter: String]) {
         let expectation = self.expectation(description: "Mission")
         
         APIService.shared.GET(endpoint: .mission, params: params) { (result: Result<PaginatedResponse<Mission>, APIError>) in
@@ -31,17 +31,17 @@ final class MissionTests: XCTestCase {
     }
     
     func test_mission_byID_list() {
-        let params = ["id": "785", "mode": "list"]
+        let params: [APIParameter: String] = [.id: "785", .mode: "list"]
         test_mission_endpoint(with: params)
     }
     
     func test_mission_byID_summary() {
-        let params = ["id": "785", "mode": "summary"]
+        let params: [APIParameter: String] = [.id: "785", .mode: "summary"]
         test_mission_endpoint(with: params)
     }
     
     func test_mission_byID_verbose() {
-        let params = ["id": "785", "mode": "verbose"]
+        let params: [APIParameter: String] = [.id: "785", .mode: "verbose"]
         test_mission_endpoint(with: params)
     }
 }

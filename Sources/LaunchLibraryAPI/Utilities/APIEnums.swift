@@ -54,10 +54,21 @@ public enum APIError: Error {
     case networkError(error: Error)
 }
 
-enum RequestMode: String {
-    case verbose = "verbose"
-    case list = "list"
-    case summary = "summary"
+public enum APIParameter: String {
+    case mode = "mode"
+    case next = "next"
+    case agency = "agency"
+    case startdate = "startdate"
+    case enddate = "enddate"
+    case limit = "limit"
+    case total = "total"
+    case count = "count"
+    case offset = "offset"
+    case tbdtime = "tbdtime"
+    case tbddate = "tbddate"
+    case id = "id"
+    case changed = "changed"
+    case locationid = "locationid"
 }
 
 public protocol CodableResponse {
