@@ -104,9 +104,9 @@ public struct Launch {
     /// Available in modes: V
     public let missions: [Mission]?
     
-    /// The launch service provider for the launch
+    /// The value type for the launch service provider
     /// Available in modes: V
-    public let lsp: Agency?
+    private let lsp: VariableValueType<Agency>?
     
     /// The date this resource last changed
     /// Available in modes: L, S, V
@@ -118,5 +118,69 @@ extension Launch: Codable { }
 extension Launch: CodableResponse {
     public static var arrayKey: String {
         return "launches"
+    }
+}
+
+extension Launch {
+    /// Start Time (in UTC)
+    public var startDateUTC: Date? {
+        return isostart?.dateFromISO8601
+    }
+    
+    /// End Time (in UTC)
+    public var endDateUTC: Date? {
+        return isoend?.dateFromISO8601
+    }
+    
+    /// NET Time (in UTC)
+    public var netDateUTC: Date? {
+        return isonet?.dateFromISO8601
+    }
+    
+    /// Window Start Time (in UTC)
+    public var windowStartDateUTC: Date? {
+        guard let startTimestamp = wsstamp else {
+            return nil
+        }
+        
+        return Date(timeIntervalSince1970: TimeInterval(startTimestamp))
+    }
+    
+    /// Window End Time (in UTC)
+    public var windowEndDateUTC: Date? {
+        guard let endTimestamp = westamp else {
+            return nil
+        }
+        
+        return Date(timeIntervalSince1970: TimeInterval(endTimestamp))
+    }
+    
+    /// Window NET Time (in UTC)
+    public var windowNETDateUTC: Date? {
+        guard let netTimestamp = netstamp else {
+            return nil
+        }
+        
+        return Date(timeIntervalSince1970: TimeInterval(netTimestamp))
+    }
+    
+    /// Last updated date (in UTC)
+    public var lastUpdatedDate: Date? {
+        return changed?.date(format: "yyyy-MM-dd HH:mm:ss")
+    }
+    
+    /// The launch service provider for the launch
+    /// Available in modes: V
+    public var lspAgency: Agency? {
+        guard let lsp = lsp else {
+            return nil
+        }
+        
+        switch lsp {
+        case .array(let value):
+            return value.first
+        default:
+            return nil
+        }
     }
 }

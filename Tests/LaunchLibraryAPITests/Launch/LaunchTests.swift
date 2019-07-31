@@ -44,4 +44,9 @@ final class LaunchTests: XCTestCase {
         let params: [APIParameter: String] = [.id: "318", .mode: "verbose"]
         test_launch_endpoint(with: params)
     }
+    
+    func test_launch_1663_verbose() {
+        let params: [APIParameter: String] = [.id: "1663", .mode: "verbose"]
+        test_launch_endpoint(with: params)
+    }
 }

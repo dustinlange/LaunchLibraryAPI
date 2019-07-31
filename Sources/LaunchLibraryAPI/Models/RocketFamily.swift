@@ -16,19 +16,58 @@ public struct RocketFamily {
     /// Available in modes: L, S, V
     public let name: String?
     
-    /// Collection of agencies
+    /// The value type for agencies
     /// Available in modes: V
-    public let agencies: [Agency]?
+    private let agencyValue: VariableValueType<Agency>?
     
     /// The date this resource last changed
     /// Available in modes: L, S, V
     public let changed: String?
 }
 
-extension RocketFamily: Codable { }
+extension RocketFamily: Codable {
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case agencyValue = "agencies"
+        case changed
+    }
+}
 
 extension RocketFamily: CodableResponse {
     public static var arrayKey: String {
         return "RocketFamilies"
+    }
+}
+
+extension RocketFamily {
+    /// Collection of agencies; Available through the RocketFamily endpoint
+    /// Available in modes: V
+    public var agencies: [Agency]? {
+        guard let agencyValue = agencyValue else {
+            return nil
+        }
+        
+        switch agencyValue {
+        case .array(let values):
+            return values
+        default:
+            return nil
+        }
+    }
+    
+    /// Collection of agency IDs; Available through the Rocket endpoint
+    /// Available in modes: V
+    public var agencyIds: [String]? {
+        guard let agencyValue = agencyValue else {
+            return nil
+        }
+        
+        switch agencyValue {
+        case .id(let value):
+            return value.components(separatedBy: ",")
+        default:
+            return nil
+        }
     }
 }

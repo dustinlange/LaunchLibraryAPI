@@ -37,6 +37,7 @@ private struct GenericCodingKeys: CodingKey {
     }
     
     init?(intValue: Int) {
-        self.intValue = intValue; self.stringValue = "\(intValue)"
+        self.intValue = intValue
+        self.stringValue = "\(intValue)"
     }
 }
