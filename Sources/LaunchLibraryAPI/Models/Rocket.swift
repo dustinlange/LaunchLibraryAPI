@@ -56,6 +56,13 @@ public struct Rocket {
     public let changed: String?
 }
 
+extension Rocket {
+    /// Last updated date (in UTC)
+    public var lastUpdatedDate: Date? {
+        return changed?.date(format: "yyyy-MM-dd HH:mm:ss")
+    }
+}
+
 extension Rocket: Codable { }
 
 extension Rocket: CodableResponse {

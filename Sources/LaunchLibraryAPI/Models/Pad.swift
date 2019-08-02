@@ -61,6 +61,13 @@ public struct Pad {
     public let changed: String?
 }
 
+extension Pad {
+    /// Last updated date (in UTC)
+    public var lastUpdatedDate: Date? {
+        return changed?.date(format: "yyyy-MM-dd HH:mm:ss")
+    }
+}
+
 extension Pad: Codable { }
 
 extension Pad: CodableResponse {

@@ -25,22 +25,12 @@ public struct RocketFamily {
     public let changed: String?
 }
 
-extension RocketFamily: Codable {
-    enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case agencyValue = "agencies"
-        case changed
-    }
-}
-
-extension RocketFamily: CodableResponse {
-    public static var arrayKey: String {
-        return "RocketFamilies"
-    }
-}
-
 extension RocketFamily {
+    /// Last updated date (in UTC)
+    public var lastUpdatedDate: Date? {
+        return changed?.date(format: "yyyy-MM-dd HH:mm:ss")
+    }
+    
     /// Collection of agencies; Available through the RocketFamily endpoint
     /// Available in modes: V
     public var agencies: [Agency]? {
@@ -69,5 +59,20 @@ extension RocketFamily {
         default:
             return nil
         }
+    }
+}
+
+extension RocketFamily: Codable {
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case agencyValue = "agencies"
+        case changed
+    }
+}
+
+extension RocketFamily: CodableResponse {
+    public static var arrayKey: String {
+        return "RocketFamilies"
     }
 }

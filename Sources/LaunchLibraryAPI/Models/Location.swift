@@ -33,6 +33,13 @@ public struct Location {
     public let changed: String?
 }
 
+extension Location {
+    /// Last updated date (in UTC)
+    public var lastUpdatedDate: Date? {
+        return changed?.date(format: "yyyy-MM-dd HH:mm:ss")
+    }
+}
+
 extension Location: Codable { }
 
 extension Location: CodableResponse {

@@ -46,6 +46,13 @@ public struct Agency {
     public let changed: String?
 }
 
+extension Agency {
+    /// Last updated date (in UTC)
+    public var lastUpdatedDate: Date? {
+        return changed?.date(format: "yyyy-MM-dd HH:mm:ss")
+    }
+}
+
 extension Agency: Codable { }
 
 extension Agency: CodableResponse {

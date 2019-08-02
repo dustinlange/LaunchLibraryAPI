@@ -113,14 +113,6 @@ public struct Launch {
     public let changed: String?
 }
 
-extension Launch: Codable { }
-
-extension Launch: CodableResponse {
-    public static var arrayKey: String {
-        return "launches"
-    }
-}
-
 extension Launch {
     /// Start Time (in UTC)
     public var startDateUTC: Date? {
@@ -182,5 +174,13 @@ extension Launch {
         default:
             return nil
         }
+    }
+}
+
+extension Launch: Codable { }
+
+extension Launch: CodableResponse {
+    public static var arrayKey: String {
+        return "launches"
     }
 }
