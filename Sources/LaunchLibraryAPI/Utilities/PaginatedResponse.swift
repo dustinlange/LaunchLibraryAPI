@@ -10,7 +10,7 @@ import Foundation
 public struct PaginatedResponse<T: Codable & CodableResponse>: Codable {
     public let total: Int?
     public let count: Int?
-    public let offset: Int?
+    public var offset: Int?
     public var results: [T]
     
     private enum CodingKeys: String, CodingKey {
@@ -21,7 +21,19 @@ public struct PaginatedResponse<T: Codable & CodableResponse>: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         total = try values.decode(Int.self, forKey: .total)
         count = try values.decode(Int.self, forKey: .count)
-        offset = try values.decode(Int.self, forKey: .offset)
+        
+        // It's possible for the offset value to be returned as an Int or String. I've
+        // reported this inconsistency to LaunchLibrary.
+        
+        // Attempt to decode as an Int
+        if let offsetInt = try? values.decode(Int.self, forKey: .offset) {
+            offset = offsetInt
+        }
+        
+        // Attempt to decode as a String
+        if let offsetString = try? values.decode(String.self, forKey: .offset) {
+            offset = Int(offsetString)
+        }
         
         let genericValues = try decoder.container(keyedBy: GenericCodingKeys.self)
         results = try genericValues.decode([T].self, forKey: GenericCodingKeys(stringValue: T.arrayKey)!)

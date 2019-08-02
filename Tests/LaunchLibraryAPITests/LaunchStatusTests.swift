@@ -13,7 +13,8 @@ final class LaunchStatusTests: XCTestCase {
     private func test_launchStatus_endpoint(with params: [APIParameter: String]) {
         let expectation = self.expectation(description: "LaunchStatus")
         
-        APIService.shared.GET(endpoint: .launchStatus, params: params) { (result: Result<PaginatedResponse<LaunchStatus>, APIError>) in
+        let request = PaginatedRequest<LaunchStatus>(.launchStatus, params)
+        request.fetch() { result in
             switch result {
             case let .success(response):
                 XCTAssertEqual(1, response.total)
@@ -30,17 +31,17 @@ final class LaunchStatusTests: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func test_launchStatus_byID_list() {
+    func test_launchStatus_byID_1_list() {
         let params: [APIParameter: String] = [.id: "1", .mode: "list"]
         test_launchStatus_endpoint(with: params)
     }
     
-    func test_launchStatus_byID_summary() {
+    func test_launchStatus_byID_1_summary() {
         let params: [APIParameter: String] = [.id: "1", .mode: "summary"]
         test_launchStatus_endpoint(with: params)
     }
     
-    func test_launchStatus_byID_verbose() {
+    func test_launchStatus_byID_1_verbose() {
         let params: [APIParameter: String] = [.id: "1", .mode: "verbose"]
         test_launchStatus_endpoint(with: params)
     }

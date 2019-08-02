@@ -13,7 +13,8 @@ final class LaunchTests: XCTestCase {
     private func test_launch_endpoint(with params: [APIParameter: String]) {
         let expectation = self.expectation(description: "Launch")
         
-        APIService.shared.GET(endpoint: .launch, params: params) { (result: Result<PaginatedResponse<Launch>, APIError>) in
+        let request = PaginatedRequest<Launch>(.launch, params)
+        request.fetch() { result in
             switch result {
             case let .success(response):
                 XCTAssertEqual(1, response.total)
@@ -30,22 +31,22 @@ final class LaunchTests: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func test_launch_byID_list() {
+    func test_launch_byID_318_list() {
         let params: [APIParameter: String] = [.id: "318", .mode: "list"]
         test_launch_endpoint(with: params)
     }
     
-    func test_launch_byID_summary() {
+    func test_launch_byID_318_summary() {
         let params: [APIParameter: String] = [.id: "318", .mode: "summary"]
         test_launch_endpoint(with: params)
     }
     
-    func test_launch_byID_verbose() {
+    func test_launch_byID_318_verbose() {
         let params: [APIParameter: String] = [.id: "318", .mode: "verbose"]
         test_launch_endpoint(with: params)
     }
     
-    func test_launch_1663_verbose() {
+    func test_launch_byID_1663_verbose() {
         let params: [APIParameter: String] = [.id: "1663", .mode: "verbose"]
         test_launch_endpoint(with: params)
     }

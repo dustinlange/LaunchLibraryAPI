@@ -13,7 +13,8 @@ final class RocketFamilyTests: XCTestCase {
     private func test_rocketFamily_endpoint(with params: [APIParameter: String]) {
         let expectation = self.expectation(description: "RocketFamily")
         
-        APIService.shared.GET(endpoint: .rocketFamily, params: params) { (result: Result<PaginatedResponse<RocketFamily>, APIError>) in
+        let request = PaginatedRequest<RocketFamily>(.rocketFamily, params)
+        request.fetch() { result in
             switch result {
             case let .success(response):
                 XCTAssertEqual(1, response.total)
@@ -30,17 +31,17 @@ final class RocketFamilyTests: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func test_rocketFamily_byID_list() {
+    func test_rocketFamily_byID_1_list() {
         let params: [APIParameter: String] = [.id: "1", .mode: "list"]
         test_rocketFamily_endpoint(with: params)
     }
     
-    func test_rocketFamily_byID_summary() {
+    func test_rocketFamily_byID_1_summary() {
         let params: [APIParameter: String] = [.id: "1", .mode: "summary"]
         test_rocketFamily_endpoint(with: params)
     }
     
-    func test_rocketFamily_byID_verbose() {
+    func test_rocketFamily_byID_1_verbose() {
         let params: [APIParameter: String] = [.id: "1", .mode: "verbose"]
         test_rocketFamily_endpoint(with: params)
     }

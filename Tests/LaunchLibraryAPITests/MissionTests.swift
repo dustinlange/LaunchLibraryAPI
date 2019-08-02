@@ -13,7 +13,8 @@ final class MissionTests: XCTestCase {
     private func test_mission_endpoint(with params: [APIParameter: String]) {
         let expectation = self.expectation(description: "Mission")
         
-        APIService.shared.GET(endpoint: .mission, params: params) { (result: Result<PaginatedResponse<Mission>, APIError>) in
+        let request = PaginatedRequest<Mission>(.mission, params)
+        request.fetch() { result in
             switch result {
             case let .success(response):
                 XCTAssertEqual(1, response.total)
@@ -30,17 +31,17 @@ final class MissionTests: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func test_mission_byID_list() {
+    func test_mission_byID_785_list() {
         let params: [APIParameter: String] = [.id: "785", .mode: "list"]
         test_mission_endpoint(with: params)
     }
     
-    func test_mission_byID_summary() {
+    func test_mission_byID_785_summary() {
         let params: [APIParameter: String] = [.id: "785", .mode: "summary"]
         test_mission_endpoint(with: params)
     }
     
-    func test_mission_byID_verbose() {
+    func test_mission_byID_785_verbose() {
         let params: [APIParameter: String] = [.id: "785", .mode: "verbose"]
         test_mission_endpoint(with: params)
     }

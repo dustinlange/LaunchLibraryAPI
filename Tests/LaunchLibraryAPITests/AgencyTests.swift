@@ -13,7 +13,8 @@ final class AgencyTests: XCTestCase {
     private func test_agency_endpoint(with params: [APIParameter: String]) {
         let expectation = self.expectation(description: "Agency")
         
-        APIService.shared.GET(endpoint: .agency, params: params) { (result: Result<PaginatedResponse<Agency>, APIError>) in
+        let request = PaginatedRequest<Agency>(.agency, params)
+        request.fetch() { result in
             switch result {
             case let .success(response):
                 XCTAssertEqual(1, response.total)
@@ -30,18 +31,18 @@ final class AgencyTests: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func test_agency_byID_list() {
-        let params = [APIParameter.id: "1", APIParameter.mode: "list"]
+    func test_agency_byID_1_list() {
+        let params: [APIParameter: String] = [.id: "1", .mode: "list"]
         test_agency_endpoint(with: params)
     }
     
-    func test_agency_byID_summary() {
-        let params = [APIParameter.id: "1", APIParameter.mode: "summary"]
+    func test_agency_byID_1_summary() {
+        let params: [APIParameter: String] = [.id: "1", .mode: "summary"]
         test_agency_endpoint(with: params)
     }
     
-    func test_agency_byID_verbose() {
-        let params = [APIParameter.id: "1", APIParameter.mode: "verbose"]
+    func test_agency_byID_1_verbose() {
+        let params: [APIParameter: String] = [.id: "1", .mode: "verbose"]
         test_agency_endpoint(with: params)
     }
 }
