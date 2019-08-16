@@ -32,18 +32,27 @@ public struct APIService {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
-                completion(.failure(.networkError(error: error!)))
+                DispatchQueue.main.async {
+                    completion(.failure(.networkError(error: error!)))
+                }
+                
                 return
             }
             
             guard let data = data else {
-                completion(.failure(.noResponse))
+                DispatchQueue.main.async {
+                    completion(.failure(.noResponse))
+                }
+                
                 return
             }
             
             do {
                 let result = try self.decoder.decode(T.self, from: data)
-                completion(.success(result))
+                
+                DispatchQueue.main.async {
+                    completion(.success(result))
+                }
             } catch let error {
                 completion(.failure(.jsonDecodingError(error: error)))
             }
