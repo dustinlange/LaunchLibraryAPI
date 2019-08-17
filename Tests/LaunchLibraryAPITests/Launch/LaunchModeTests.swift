@@ -15,12 +15,15 @@ final class LaunchModeTests: XCTestCase {
         
         let request = PaginatedRequest<Launch>(.launch, params)
         request.fetch() { result in
+            XCTAssertFalse(request.hasMorePages)
+            
             switch result {
             case let .success(response):
                 XCTAssertEqual(1, response.total)
                 XCTAssertEqual(1, response.count)
                 XCTAssertEqual(0, response.offset)
                 XCTAssertEqual(1, response.results.count)
+                
             case .failure(let error):
                 XCTFail("Request failed! \(error)")
             }

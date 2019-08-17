@@ -15,6 +15,8 @@ final class AgencyTypeTests: XCTestCase {
         
         let request = PaginatedRequest<AgencyType>(.agencyType, params)
         request.fetch() { result in
+            XCTAssertFalse(request.hasMorePages)
+            
             switch result {
             case let .success(response):
                 XCTAssertEqual(1, response.total)

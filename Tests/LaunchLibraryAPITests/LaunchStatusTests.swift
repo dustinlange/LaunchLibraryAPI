@@ -15,6 +15,8 @@ final class LaunchStatusTests: XCTestCase {
         
         let request = PaginatedRequest<LaunchStatus>(.launchStatus, params)
         request.fetch() { result in
+            XCTAssertFalse(request.hasMorePages)
+            
             switch result {
             case let .success(response):
                 XCTAssertEqual(1, response.total)

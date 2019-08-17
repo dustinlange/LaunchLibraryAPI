@@ -15,6 +15,8 @@ final class MissionTests: XCTestCase {
         
         let request = PaginatedRequest<Mission>(.mission, params)
         request.fetch() { result in
+            XCTAssertFalse(request.hasMorePages)
+            
             switch result {
             case let .success(response):
                 XCTAssertEqual(1, response.total)

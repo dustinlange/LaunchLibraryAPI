@@ -15,6 +15,8 @@ final class RocketTests: XCTestCase {
         
         let request = PaginatedRequest<Rocket>(.rocket, params)
         request.fetch() { result in
+            XCTAssertFalse(request.hasMorePages)
+            
             switch result {
             case let .success(response):
                 XCTAssertEqual(1, response.total)
