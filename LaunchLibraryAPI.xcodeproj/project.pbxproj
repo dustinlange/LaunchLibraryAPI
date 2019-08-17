@@ -21,6 +21,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		C538BBD323078923007B35F9 /* LaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C538BBD223078923007B35F9 /* LaunchTests.swift */; };
+		C538BBD523078AB6007B35F9 /* LaunchGeneralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C538BBD423078AB6007B35F9 /* LaunchGeneralTests.swift */; };
+		C538BBD823078C82007B35F9 /* Date+TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C538BBD723078C82007B35F9 /* Date+TestHelper.swift */; };
 		OBJ_100 /* MissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* MissionTests.swift */; };
 		OBJ_101 /* MissionTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* MissionTypeTests.swift */; };
 		OBJ_102 /* PadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* PadTests.swift */; };
@@ -51,7 +54,7 @@
 		OBJ_94 /* AgencyTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* AgencyTypeTests.swift */; };
 		OBJ_95 /* LSPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* LSPTests.swift */; };
 		OBJ_96 /* LaunchDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* LaunchDateTests.swift */; };
-		OBJ_97 /* LaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* LaunchTests.swift */; };
+		OBJ_97 /* LaunchModeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* LaunchModeTests.swift */; };
 		OBJ_98 /* LaunchStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* LaunchStatusTests.swift */; };
 		OBJ_99 /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* LocationTests.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +77,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C538BBD223078923007B35F9 /* LaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTests.swift; sourceTree = "<group>"; };
+		C538BBD423078AB6007B35F9 /* LaunchGeneralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchGeneralTests.swift; sourceTree = "<group>"; };
+		C538BBD723078C82007B35F9 /* Date+TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TestHelper.swift"; sourceTree = "<group>"; };
 		"LaunchLibraryAPI::LaunchLibraryAPI::Product" /* LaunchLibraryAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LaunchLibraryAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"LaunchLibraryAPI::LaunchLibraryAPITests::Product" /* LaunchLibraryAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = LaunchLibraryAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_11 /* Formatter+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Date.swift"; sourceTree = "<group>"; };
@@ -98,7 +104,7 @@
 		OBJ_35 /* AgencyTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgencyTypeTests.swift; sourceTree = "<group>"; };
 		OBJ_36 /* LSPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSPTests.swift; sourceTree = "<group>"; };
 		OBJ_38 /* LaunchDateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDateTests.swift; sourceTree = "<group>"; };
-		OBJ_39 /* LaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTests.swift; sourceTree = "<group>"; };
+		OBJ_39 /* LaunchModeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchModeTests.swift; sourceTree = "<group>"; };
 		OBJ_40 /* LaunchStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchStatusTests.swift; sourceTree = "<group>"; };
 		OBJ_41 /* LocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
 		OBJ_42 /* MissionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionTests.swift; sourceTree = "<group>"; };
@@ -130,6 +136,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C538BBD623078C6D007B35F9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C538BBD723078C82007B35F9 /* Date+TestHelper.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,10 +201,11 @@
 		OBJ_33 /* LaunchLibraryAPITests */ = {
 			isa = PBXGroup;
 			children = (
+				OBJ_37 /* Launch */,
+				C538BBD623078C6D007B35F9 /* Utilities */,
 				OBJ_34 /* AgencyTests.swift */,
 				OBJ_35 /* AgencyTypeTests.swift */,
 				OBJ_36 /* LSPTests.swift */,
-				OBJ_37 /* Launch */,
 				OBJ_40 /* LaunchStatusTests.swift */,
 				OBJ_41 /* LocationTests.swift */,
 				OBJ_42 /* MissionTests.swift */,
@@ -206,8 +221,10 @@
 		OBJ_37 /* Launch */ = {
 			isa = PBXGroup;
 			children = (
+				C538BBD423078AB6007B35F9 /* LaunchGeneralTests.swift */,
 				OBJ_38 /* LaunchDateTests.swift */,
-				OBJ_39 /* LaunchTests.swift */,
+				OBJ_39 /* LaunchModeTests.swift */,
+				C538BBD223078923007B35F9 /* LaunchTests.swift */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -348,6 +365,7 @@
 				OBJ_63 /* LaunchStatus.swift in Sources */,
 				OBJ_64 /* Location.swift in Sources */,
 				OBJ_65 /* Mission.swift in Sources */,
+				C538BBD823078C82007B35F9 /* Date+TestHelper.swift in Sources */,
 				OBJ_66 /* MissionType.swift in Sources */,
 				OBJ_67 /* Pad.swift in Sources */,
 				OBJ_68 /* Payload.swift in Sources */,
@@ -377,12 +395,14 @@
 				OBJ_94 /* AgencyTypeTests.swift in Sources */,
 				OBJ_95 /* LSPTests.swift in Sources */,
 				OBJ_96 /* LaunchDateTests.swift in Sources */,
-				OBJ_97 /* LaunchTests.swift in Sources */,
+				OBJ_97 /* LaunchModeTests.swift in Sources */,
 				OBJ_98 /* LaunchStatusTests.swift in Sources */,
 				OBJ_99 /* LocationTests.swift in Sources */,
 				OBJ_100 /* MissionTests.swift in Sources */,
 				OBJ_101 /* MissionTypeTests.swift in Sources */,
+				C538BBD323078923007B35F9 /* LaunchTests.swift in Sources */,
 				OBJ_102 /* PadTests.swift in Sources */,
+				C538BBD523078AB6007B35F9 /* LaunchGeneralTests.swift in Sources */,
 				OBJ_103 /* RocketFamilyTests.swift in Sources */,
 				OBJ_104 /* RocketTests.swift in Sources */,
 			);
