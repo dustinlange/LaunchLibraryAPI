@@ -75,7 +75,7 @@
 
 /* Begin PBXFileReference section */
 		"LaunchLibraryAPI::LaunchLibraryAPI::Product" /* LaunchLibraryAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LaunchLibraryAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"LaunchLibraryAPI::LaunchLibraryAPITests::Product" /* LaunchLibraryAPITests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = LaunchLibraryAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"LaunchLibraryAPI::LaunchLibraryAPITests::Product" /* LaunchLibraryAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = LaunchLibraryAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_11 /* Formatter+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Date.swift"; sourceTree = "<group>"; };
 		OBJ_12 /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 		OBJ_14 /* Agency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agency.swift; sourceTree = "<group>"; };
@@ -544,6 +544,7 @@
 		OBJ_90 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -569,6 +570,7 @@
 		OBJ_91 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
