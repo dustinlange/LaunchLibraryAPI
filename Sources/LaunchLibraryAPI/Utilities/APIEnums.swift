@@ -69,6 +69,8 @@ public enum APIParameter: String {
     case id = "id"
     case changed = "changed"
     case locationid = "locationid"
+    case abbrev = "abbrev"
+    case name = "name"
 }
 
 public protocol CodableResponse {
