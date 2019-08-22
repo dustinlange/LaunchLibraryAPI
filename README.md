@@ -33,13 +33,15 @@ import LaunchLibraryAPI
 // ...
 
 let params: [APIParameter: String] = [.mode: "verbose", .next: "30"]
+let request = PaginatedRequest<Launch>(.launch, params)
 
-APIService.shared.GET(endpoint: .launch, params: params) { [weak self] (result: Result<PaginatedResponse<Launch>, APIError>) in
+request.fetch() { [weak self] result in
     guard let strongSelf = self else { return }
-
+    
     switch result {
     case .success(let response):
         let launches = strongSelf.response?.results
+        print(launches)
     case .failure(_):
         break
     }
