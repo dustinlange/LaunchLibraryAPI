@@ -14,7 +14,7 @@ http://launchlibrary.net
 ## Installation
 ### Swift Package Manager
 Add this as a dependency to your `Packages.swift`:
-```
+```swift
 import PackageDescription
 
 let package = Package(
@@ -27,7 +27,7 @@ let package = Package(
 ```
 ## Usage
 
-```
+```swift
 import LaunchLibraryAPI
 
 // ...
