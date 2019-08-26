@@ -26,11 +26,11 @@ public struct Pad {
     
     /// The latitude of the pad
     /// Available in modes: S, V
-    public let latitude: String?
+    public private(set) var latitude: Double?
     
     /// The longitude of the pad
     /// Available in modes: S, V
-    public let longitude: String?
+    public private(set) var longitude: Double?
     
     /// The URL of the pad on a map
     /// Available in modes: V
@@ -68,7 +68,39 @@ extension Pad {
     }
 }
 
-extension Pad: Codable { }
+extension Pad: Codable {
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(Int.self, forKey: .id)
+        name = try? values.decode(String.self, forKey: .name)
+        padType = try? values.decode(PadType.self, forKey: .padType)
+        mapURL = try? values.decode(String.self, forKey: .mapURL)
+        retired = try? values.decode(Int.self, forKey: .retired)
+        locationid = try? values.decode(Int.self, forKey: .locationid)
+        agencies = try? values.decode([Agency].self, forKey: .agencies)
+        wikiURL = try? values.decode(String.self, forKey: .wikiURL)
+        infoURLs = try? values.decode([String].self, forKey: .infoURLs)
+        changed = try? values.decode(String.self, forKey: .changed)
+        
+        // The latitude value type can be a double or string
+        if let latitudeValue = try? values.decode(Double.self, forKey: .latitude) {
+            latitude = latitudeValue
+        }
+        
+        if let latitudeValue = try? values.decode(String.self, forKey: .latitude) {
+            latitude = Double(latitudeValue)
+        }
+        
+        // The longitude value type can be a double or string
+        if let longitudeValue = try? values.decode(Double.self, forKey: .longitude) {
+            longitude = longitudeValue
+        }
+        
+        if let longitudeValue = try? values.decode(String.self, forKey: .longitude) {
+            longitude = Double(longitudeValue)
+        }
+    }
+}
 
 extension Pad: CodableResponse {
     public static var arrayKey: String {

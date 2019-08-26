@@ -28,6 +28,10 @@ public struct Location {
     /// Available in modes: V
     public let infoURLs: [String]?
     
+    /// Collection of launch/landing pads
+    /// Available in modes: V
+    public let pads: [Pad]?
+    
     /// The date this resource last changed
     /// Available in modes: V
     public let changed: String?
