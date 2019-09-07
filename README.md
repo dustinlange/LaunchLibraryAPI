@@ -3,6 +3,7 @@
 [![Build Status](https://app.bitrise.io/app/364818605c2b5b91/status.svg?token=fANlrqLBpVtTFRwLH99lTg&branch=develop)](https://app.bitrise.io/app/364818605c2b5b91)
 [![codecov](https://codecov.io/gh/dustinlange/LaunchLibraryAPI/branch/develop/graph/badge.svg)](https://codecov.io/gh/dustinlange/LaunchLibraryAPI)
 [![Swift Package Manager Compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-4BC51D.svg?style=flat)](https://github.com/apple/swift-package-manager)
+![](https://img.shields.io/badge/swift-5-223344.svg?logo=swift&labelColor=FA7343&logoColor=white)
 
 Swift package for consuming the Launch Library API (http://launchlibrary.net/docs/1.4.1/api.html)
 
