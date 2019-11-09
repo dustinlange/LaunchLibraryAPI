@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class PaginatedRequest<T: Codable & CodableResponse>: APIRequest<PaginatedResponse<T>> {
+public final class PaginatedRequest<T: Codable & CodableResponse>: APIRequest<PaginatedResponse<T>> {
     private var response: PaginatedResponse<T>?
     
     /// Returns the current page number
