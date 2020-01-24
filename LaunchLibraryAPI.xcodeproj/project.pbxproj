@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		C520999023DA8BE400C1A005 /* LaunchDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C520998E23DA8BA000C1A005 /* LaunchDecoderTests.swift */; };
 		C538BBD323078923007B35F9 /* LaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C538BBD223078923007B35F9 /* LaunchTests.swift */; };
 		C538BBD523078AB6007B35F9 /* LaunchGeneralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C538BBD423078AB6007B35F9 /* LaunchGeneralTests.swift */; };
 		C538BBD823078C82007B35F9 /* Date+TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C538BBD723078C82007B35F9 /* Date+TestHelper.swift */; };
@@ -77,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C520998E23DA8BA000C1A005 /* LaunchDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDecoderTests.swift; sourceTree = "<group>"; };
 		C538BBD223078923007B35F9 /* LaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTests.swift; sourceTree = "<group>"; };
 		C538BBD423078AB6007B35F9 /* LaunchGeneralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchGeneralTests.swift; sourceTree = "<group>"; };
 		C538BBD723078C82007B35F9 /* Date+TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TestHelper.swift"; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				OBJ_38 /* LaunchDateTests.swift */,
 				OBJ_39 /* LaunchModeTests.swift */,
 				C538BBD223078923007B35F9 /* LaunchTests.swift */,
+				C520998E23DA8BA000C1A005 /* LaunchDecoderTests.swift */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -238,7 +241,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -247,7 +250,6 @@
 				OBJ_47 /* Products */,
 				OBJ_51 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -338,7 +340,7 @@
 				English,
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_47 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -391,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				C520999023DA8BE400C1A005 /* LaunchDecoderTests.swift in Sources */,
 				OBJ_93 /* AgencyTests.swift in Sources */,
 				OBJ_94 /* AgencyTypeTests.swift in Sources */,
 				OBJ_95 /* LSPTests.swift in Sources */,
