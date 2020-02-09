@@ -8,7 +8,13 @@
 import Foundation
 
 public enum LaunchStatusType: Int, Codable {
-    case Green = 1, Red, Success, Failed
+    case go = 1
+    case tbd
+    case success
+    case failure
+    case hold
+    case inFlight
+    case partialFailure
 }
 
 public struct Launch {
