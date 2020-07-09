@@ -51,3 +51,9 @@ extension Location: CodableResponse {
         return "locations"
     }
 }
+
+extension Location: Equatable {
+    public static func ==(lhs: Location, rhs: Location) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
